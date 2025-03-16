@@ -1,23 +1,24 @@
-package org.example;
+package Stack;
 
 import java.util.Scanner;
 import java.util.Stack;
 
 public class Ejercicio3 {
     static Scanner teclado = new Scanner(System.in);
-    public static boolean esBalanceado(String expresion){
+
+    public static boolean esBalanceado(String expresion) {
         Stack<String> pila = new Stack<>();
-        String [] expresion_v =expresion.split("");
+        String[] expresion_v = expresion.split("");
         for (int i = 0; i < expresion_v.length; i++) {
-            if (expresion_v[i].equals("(")){
+            if (expresion_v[i].equals("(")) {
                 pila.push(expresion_v[i]);
-            } else if (expresion_v[i].equals(")")&& pila.contains("(")) {
+            } else if (expresion_v[i].equals(")") && pila.contains("(")) {
                 pila.pop();
             }
         }
-        if (pila.isEmpty()){
+        if (pila.isEmpty()) {
             return true;
-        }else {
+        } else {
             return false;
         }
 
@@ -27,7 +28,7 @@ public class Ejercicio3 {
         String expresion = "(2+3))+(5-1)(";
         if (esBalanceado(expresion)) {
             System.out.println("Correcto");
-        }else {
+        } else {
             System.out.println("Incorrecto");
         }
     }
