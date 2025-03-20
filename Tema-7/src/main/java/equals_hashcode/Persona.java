@@ -8,6 +8,9 @@ public class Persona {
         this.edad = edad;
     }
 
+    public int getEdad() {
+        return edad;
+    }
 
     @Override
     public String toString() {

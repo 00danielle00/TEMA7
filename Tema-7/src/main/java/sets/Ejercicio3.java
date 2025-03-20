@@ -1,4 +1,4 @@
-package Sets;
+package sets;
 
 import java.util.LinkedHashSet;
 import java.util.Scanner;
