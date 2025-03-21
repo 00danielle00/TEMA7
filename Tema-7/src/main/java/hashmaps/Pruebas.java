@@ -50,6 +50,8 @@ public class Pruebas {
         for (Map.Entry<String, Integer> nota: notas.entrySet()) {
             System.out.println("Nota de: "+nota.getKey()+" es de "+nota.getValue());
         }
+        //para que nos respete la estructura y el orden, usamos linkedHashMap
+
 
     }
 }
