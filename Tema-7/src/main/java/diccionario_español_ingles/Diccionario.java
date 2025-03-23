@@ -29,27 +29,12 @@ public class Diccionario {
     }
 
     public void palabraAleatoria() {
-        int aleatorio = r.nextInt();
-        for (String palabra : mapaDiccionario.keySet()) {
-
-        }
-
     }
 
     public void primeraLetraTraduccion(String espanyol) {
-
         for (Map.Entry<String, String> map : mapaDiccionario.entrySet()) {
-            System.out.println(map.getKey() + ": " + map.getValue());
-            System.out.println("Indique la respuesta: ");
-            String respuesta = sc.next();
-            if (respuesta.contains(mapaDiccionario.get(espanyol))){
-                System.out.println("Correcto");
-            } else {
-                System.out.println("¡NO! La respuesta correcta es "+mapaDiccionario.get(espanyol));
-            }
+            System.out.println(map.getKey() + ": " + map.getValue().substring(0, 1));
         }
-
-
     }
 
     @Override
