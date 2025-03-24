@@ -23,7 +23,7 @@ public class AppDiccionario {
             if (respuesta.equalsIgnoreCase("fin")){
                 return;
             }else {
-
+                    
             }
         }
 
