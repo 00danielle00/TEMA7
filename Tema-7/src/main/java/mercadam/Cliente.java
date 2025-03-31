@@ -1,20 +1,24 @@
 package mercadam;
 
+import mercadam.Pedido;
+
 import java.util.Objects;
+import java.util.Scanner;
 
 public class Cliente {
+    private static Scanner sc = new Scanner(System.in);
     private String usuario;
     private String contrasenya;
-    private Pedido pedido;
     private String direccion;
+    private Pedido pedido;
     private boolean promociones;
+
 
     public Cliente(String usuario, String contrasenya) {
         this.usuario = usuario;
         this.contrasenya = contrasenya;
         direccion="Calle falsa, 123";
-        pedido = null;
-        promociones = false;
+        pedido=null;
     }
 
     public String getUsuario() {
@@ -37,6 +41,19 @@ public class Cliente {
         return promociones;
     }
 
+    public void insertarProducto(String producto) {
+        try {
+            Producto p = Producto.valueOf(producto.toUpperCase());
+            System.out.println("has elegido " + p + " en tu lista de la compra");
+        } catch (IllegalArgumentException e) {
+            System.out.println("El producto no existe! Elige otro..");
+            AppZonaClientes.imprimirProductos();
+            sc.next().toUpperCase();
+
+        }
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -48,13 +65,5 @@ public class Cliente {
     @Override
     public int hashCode() {
         return Objects.hash(usuario, contrasenya);
-    }
-
-    @Override
-    public String toString() {
-        return "Cliente: " + "usuario='" + usuario + '\'' +
-                ", contrasenya='" + contrasenya + '\'' +
-                ", pedido=" + pedido +
-                ", promociones=" + promociones;
     }
 }

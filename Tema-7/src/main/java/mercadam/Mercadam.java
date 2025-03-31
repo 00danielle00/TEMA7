@@ -5,23 +5,24 @@ import java.util.*;
 
 public class Mercadam {
     static Random r = new Random();
-    private static Set<Cliente> clientes;
+    private static Set<Cliente> clientes = new HashSet<>();
 
 
     public Mercadam() {
-        clientes = new HashSet<>();
     }
 
 
-    public static String generarClientes(int tamano) {
-        int longitud=0;
+    public static void generarClientes() {
         String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        String[] aux = caracteres.split("");
+        String usuario = "";
         String passwd = "";
         for (int i = 0; i < 8; i++) {
-             r.nextInt(caracteres.length());
-            passwd += caracteres.charAt(longitud);
+            usuario += aux[r.nextInt(aux.length)];
+            passwd += aux[r.nextInt(aux.length)];
         }
-        return passwd;
+        clientes.add(new Cliente(usuario, passwd));
+        System.out.println(clientes);
     }
 
     public static Set<Cliente> getClientes() {
