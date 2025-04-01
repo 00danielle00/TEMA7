@@ -1,7 +1,6 @@
 package mercadam;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Pedido {
     private HashMap<Producto, Integer> pedido = new HashMap<>();
@@ -35,10 +34,31 @@ public class Pedido {
     }
 
     public void aplicarPromo3x2(){
+        for (Map.Entry<Producto,Integer> mapaDescuento: pedido.entrySet()){
+            Producto a =mapaDescuento.getKey();
+            int unidades = mapaDescuento.getValue();
+
+            double descuento = unidades/3;
+            if (unidades>0){
+                double total = descuento* mapaDescuento.getKey().getPrecio();
+                importe_total-=total;
+                System.out.println("PROMO 3X2 Y 10% APLICADAS");
+                System.out.println("Descuento de: "+total+" precio final del producto "+mapaDescuento.getKey().name()+" total "+importe_total);
+            }
+        }
 
     }
     public void aplicarPromo10(){
-        importe_total*=0.9;
+        double descuento = 0.1;
+        importe_total-=descuento;
+        System.out.println("Descuento de: "+descuento+" precio final:"+importe_total+"€");
+    }
+    public void mostrarResumenPedido(){
+        List<Map.Entry<Producto,Integer>>mapa = new ArrayList<>(pedido.entrySet());
+        mapa.sort(Map.Entry.comparingByKey(Comparator.reverseOrder()));
+        for (Map.Entry<Producto,Integer> m :mapa){
+            System.out.println("\t"+m.getValue()+" - "+m.getKey()+" "+m.getKey().getPrecio()+"€");
+        }
     }
 
     @Override

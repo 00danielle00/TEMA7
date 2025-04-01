@@ -1,9 +1,6 @@
 package mercadam;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 import mercadam.Cliente;
 
@@ -108,12 +105,14 @@ public class AppZonaClientes {
         switch (opcion){
             case "1":
                     if (!cliente.getPromociones()){
-                        System.out.println("YA HAS APLICADO TUS PROMOS.");
+                        cliente.getPedido().aplicarPromo3x2();
+                        cliente.getPedido().aplicarPromo10();
                     }else {
-
+                        System.out.println("YA HAS APLICADO TUS PROMOS.");
                     }
                 break;
             case "2":
+                cliente.getPedido().mostrarResumenPedido();
                 break;
             case "X":
                 imprimirDespedida();

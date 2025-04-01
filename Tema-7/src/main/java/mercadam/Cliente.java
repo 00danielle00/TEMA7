@@ -44,6 +44,10 @@ public class Cliente {
         this.pedido = pedido;
     }
 
+    public void setPromociones(boolean promociones) {
+        this.promociones = promociones;
+    }
+
     public void crearPedido() {
         pedido =new Pedido();
     }
