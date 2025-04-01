@@ -58,21 +58,32 @@ public class AppZonaClientes {
             try {
                 System.out.print("Elige un producto:");
                 String productoElegido = sc.next().toUpperCase();
+                cliente.insertarProducto(productoElegido);
+
+
                 Producto producto = Producto.valueOf(productoElegido);
                 cliente.getPedido().anyadirProducto(producto);
+
+
                 System.out.println("¿Quieres añadir más productos a tu carrito de la compra?[S/N]");
                 respuesta = sc.next();
-                if (respuesta.equalsIgnoreCase("s")){
-                    imprimirProductos();
 
+                if (respuesta.equalsIgnoreCase("s")) {
+                    imprimirProductos();
+                    System.out.println("================================================");
                 }
-            }catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 System.out.println("algo no ha ido bien... Vuelve a intentarlo");
             }
         } while (!respuesta.equalsIgnoreCase("n"));
-        cliente.getPedido().mostrarResumenCarrito();
-        imprimirDespedida();
+        cliente.importePedido();
+        mostrarOpcionesCliente();
+        System.out.println("================================================");
+        System.out.print("\tElige una opción: ");
+        String op = sc.next().toUpperCase();
+        System.out.println("================================================");
 
+        recogerOpcionCliente(op);
     }
 
     public static void imprimirProductos() {
@@ -84,6 +95,33 @@ public class AppZonaClientes {
     }
 
     public static void imprimirDespedida() {
-        System.out.println("GRACIAS POR SU PEDIDO "+cliente.getUsuario()+". Se lo mandaremos a la dirección " + cliente.getDireccion());
+        System.out.println("GRACIAS POR SU PEDIDO " + cliente.getUsuario() + ". Se lo mandaremos a la dirección " + cliente.getDireccion());
+    }
+
+    public static void mostrarOpcionesCliente() {
+        System.out.println("¿QUÉ DESEA HACER?");
+        System.out.println("\t[1]. Aplicar promo.");
+        System.out.println("\t[2]. Mostrar resumen ordenado por uds promo.");
+        System.out.println("\t[X]. Terminar pedido.");
+    }
+    public static String recogerOpcionCliente(String opcion){
+        switch (opcion){
+            case "1":
+                    if (!cliente.getPromociones()){
+                        System.out.println("YA HAS APLICADO TUS PROMOS.");
+                    }else {
+
+                    }
+                break;
+            case "2":
+                break;
+            case "X":
+                imprimirDespedida();
+                break;
+            default:
+                System.out.println("Has elegido una opción no válida");
+                break;
+        }
+        return opcion;
     }
 }

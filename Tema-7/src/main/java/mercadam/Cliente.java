@@ -17,6 +17,7 @@ public class Cliente {
         this.contrasenya = contrasenya;
         direccion = "Calle falsa, 123";
         pedido = null;
+        promociones = false;
     }
 
     public String getUsuario() {
@@ -35,7 +36,7 @@ public class Cliente {
         return pedido;
     }
 
-    public boolean isPromociones() {
+    public boolean getPromociones() {
         return promociones;
     }
 
@@ -44,7 +45,19 @@ public class Cliente {
     }
 
     public void crearPedido() {
+        pedido =new Pedido();
+    }
 
+    public double importePedido(){
+        System.out.println("**RESUMEN DEL CARRITO DE LA COMPRA**");
+        System.out.println("Productos:");
+        for (Map.Entry<Producto, Integer> map : pedido.getPedido().entrySet()) {
+            System.out.println("\t" + "- " + map.getValue() + " " + map.getKey() + " " + map.getKey().getPrecio() + "€");
+        }
+        System.out.println();
+        System.out.println("IMPORTE TOTAL: " + pedido.getImporte_total() + "€");
+        System.out.println();
+        return 0;
     }
 
     public void insertarProducto(String producto) {
@@ -61,7 +74,6 @@ public class Cliente {
             System.out.println("El producto no existe! Elige otro");
             AppZonaClientes.imprimirProductos();
         }
-
 
     }
 
