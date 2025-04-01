@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Mercadam {
     static Random r = new Random();
-    private static Set<Cliente> clientes = new HashSet<>();
+    private static Set<Cliente> clientes = new HashSet<>();;
 
 
     public Mercadam() {

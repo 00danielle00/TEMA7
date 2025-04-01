@@ -1,26 +1,27 @@
 package mercadam;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
+import mercadam.Cliente;
+
 
 public class AppZonaClientes {
-   static mercadam.Cliente cliente;
+    static Cliente cliente;
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Mercadam m = new Mercadam();
-        System.out.println("** COMPRA ONLINE DE MERCADAM **");
 
+        System.out.println("** COMPRA ONLINE DE MERCADAM **");
+        Mercadam.generarClientes();
+        autenticacion(Mercadam.getClientes());
         iniciarCompra();
-        imprimirProductos();
-        System.out.println("Elige un producto:");
-        String producto=sc.next().toUpperCase();
-        cliente.insertarProducto(producto);
+
     }
 
-    public static void autenticacion(Set<mercadam.Cliente> clientes) {
+    public static void autenticacion(Set<Cliente> clientes) {
         String usuario = "";
         String passwd = "";
         int contador = 3;
@@ -35,32 +36,54 @@ public class AppZonaClientes {
                     System.out.println("Algo no coincide o no existe! Vuelve a intentarlo...");
                     contador--;
                     System.out.println("te quedan " + contador + " intentos!!");
-                }else {
+                } else {
                     System.out.println("Autenticación correcta");
-                    System.out.println("Bienvenid@ "+usuario);
-                    cliente=c;
+                    System.out.println("Bienvenid@ " + usuario);
+                    cliente = c;
                     break;
                 }
             } while (contador != 0);
-            System.out.println("Error de autenticación");
+            if (contador == 0) {
+                System.out.println("ERROR DE AUTENTICACION");
+            }
         }
 
     }
 
     public static void iniciarCompra() {
-      Pedido p = new Pedido();
+        cliente.setPedido(new Pedido());
+        imprimirProductos();
+        String respuesta = "";
+        do {
+            try {
+                System.out.print("Elige un producto:");
+                String productoElegido = sc.next().toUpperCase();
+                Producto producto = Producto.valueOf(productoElegido);
+                cliente.getPedido().anyadirProducto(producto);
+                System.out.println("¿Quieres añadir más productos a tu carrito de la compra?[S/N]");
+                respuesta = sc.next();
+                if (respuesta.equalsIgnoreCase("s")){
+                    imprimirProductos();
+
+                }
+            }catch (IllegalArgumentException e){
+                System.out.println("algo no ha ido bien... Vuelve a intentarlo");
+            }
+        } while (!respuesta.equalsIgnoreCase("n"));
+        cliente.getPedido().mostrarResumenCarrito();
+        imprimirDespedida();
+
     }
 
     public static void imprimirProductos() {
-        Producto producto = Producto.ACEITE;
         System.out.println("Añade productos a tu lista de la compra...");
-        for (Producto p: Producto.values()){
-            System.out.println(p+" "+p.getPrecio()+"€");
+        for (Producto p : Producto.values()) {
+            System.out.println(p + " " + p.getPrecio() + "€");
         }
         System.out.println("=========================================");
     }
 
     public static void imprimirDespedida() {
-
+        System.out.println("GRACIAS POR SU PEDIDO "+cliente.getUsuario()+". Se lo mandaremos a la dirección " + cliente.getDireccion());
     }
 }

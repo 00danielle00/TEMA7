@@ -2,8 +2,7 @@ package mercadam;
 
 import mercadam.Pedido;
 
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class Cliente {
     private static Scanner sc = new Scanner(System.in);
@@ -13,12 +12,11 @@ public class Cliente {
     private Pedido pedido;
     private boolean promociones;
 
-
     public Cliente(String usuario, String contrasenya) {
         this.usuario = usuario;
         this.contrasenya = contrasenya;
-        direccion="Calle falsa, 123";
-        pedido=null;
+        direccion = "Calle falsa, 123";
+        pedido = null;
     }
 
     public String getUsuario() {
@@ -41,16 +39,29 @@ public class Cliente {
         return promociones;
     }
 
-    public void insertarProducto(String producto) {
-        try {
-            Producto p = Producto.valueOf(producto.toUpperCase());
-            System.out.println("has elegido " + p + " en tu lista de la compra");
-        } catch (IllegalArgumentException e) {
-            System.out.println("El producto no existe! Elige otro..");
-            AppZonaClientes.imprimirProductos();
-            sc.next().toUpperCase();
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
 
+    public void crearPedido() {
+
+    }
+
+    public void insertarProducto(String producto) {
+        Producto productoAnyadido = null;
+        double total = 0.0;
+        boolean encontrado = false;
+        for (Producto p : Producto.values()) {
+            if (p.name().equalsIgnoreCase(producto)) {
+                productoAnyadido = p;
+                encontrado = true;
+            }
         }
+        if (!encontrado) {
+            System.out.println("El producto no existe! Elige otro");
+            AppZonaClientes.imprimirProductos();
+        }
+
 
     }
 
@@ -65,5 +76,16 @@ public class Cliente {
     @Override
     public int hashCode() {
         return Objects.hash(usuario, contrasenya);
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "usuario='" + usuario + '\'' +
+                ", contrasenya='" + contrasenya + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", pedido=" + pedido +
+                ", promociones=" + promociones +
+                '}';
     }
 }
