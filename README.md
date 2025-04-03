@@ -82,19 +82,41 @@ un nuevo cliente y imprimo los valores. Y. también he aplicado el **Colletions.
 
 ![foto de la clase Pedido](img/claseCliente3.png)
 
-En esta clase, tengo los atributos, los getters, el método crear nuevo pedido en el cual creo un pedido con **new Pedido()**.
+En esta clase, tengo los atributos, los getters, el método crear nuevo pedido en el cual creo un pedido con **new Pedido()** y valido con una condición, de que si es null, que se cree un nuevo pedido.
 También esta el método **importe pedido** en el cual solo muestro por pantalla mediante un bucle for y el método **.Entry** para obtener la clave y el valor
 y muestro el valor total de los productos añadido al carrito y, en el método **insertarProducto** sirve para controlar el error de escribir un producto no existente,
 por lo que recorro mediante un bucle for para recorrer los productos y en caso de que el producto introducido no exista, se mostrará el siguiente mensaje, y, por último, 
 he aplicado el **equals() y hashcode()** para que el usuario y la contraseña no se pueda repetir.
 
 ## Pruebas
+Prueba normal:
+![foto de la clase Pedido](img/cap1.png)
+
+![foto de la clase Pedido](img/cap2.png)
+
+Aplicar Descuento:
+
+![foto de la clase Pedido](img/descuento.png)
+
+Error de Autenticación:
+
+![foto de la clase Pedido](img/ErrorAutenticacion.png)
+
+Mostrar Productos por Unidades:
+
+![foto de la clase Pedido](img/mostrarPorUnidades.png)
+
+Error en el nombre de un Producto:
+
+![foto de la clase Pedido](img/nombreProductoError.png)
+
+Opción de Salir:
+
+![foto de la clase Pedido](img/terminarPedido.png)
+
 
 ## Entrega
 - [ ] **Codigo fuente**: []()
 - [ ] **Vídeo demostrativo**:[]()
 
 @pbemdom3
-
-foto
-![]()
