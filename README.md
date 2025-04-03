@@ -23,7 +23,7 @@ El programa sigue el paradigma de **Programación Orientada a Objetos (POO)** y 
 
 **Diagrama de clases**
 
-![img/uml.png](#img/uml.png)
+![foto de diagrama uml](img/uml.png)
 
 
 ***
