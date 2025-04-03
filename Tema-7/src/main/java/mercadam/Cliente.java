@@ -66,7 +66,6 @@ public class Cliente {
 
     public void insertarProducto(String producto) {
         Producto productoAnyadido = null;
-        double total = 0.0;
         boolean encontrado = false;
         for (Producto p : Producto.values()) {
             if (p.name().equalsIgnoreCase(producto)) {

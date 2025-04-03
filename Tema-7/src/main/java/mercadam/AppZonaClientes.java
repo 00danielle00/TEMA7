@@ -48,7 +48,7 @@ public class AppZonaClientes {
     }
 
     public static void iniciarCompra() {
-        cliente.setPedido(new Pedido());
+        cliente.crearPedido();
         imprimirProductos();
         String respuesta = "";
         do {
@@ -67,7 +67,6 @@ public class AppZonaClientes {
 
                 if (respuesta.equalsIgnoreCase("s")) {
                     imprimirProductos();
-                    System.out.println("================================================");
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println("algo no ha ido bien... Vuelve a intentarlo");

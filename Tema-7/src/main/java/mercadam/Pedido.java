@@ -55,7 +55,7 @@ public class Pedido {
     }
     public void mostrarResumenPedido(){
         List<Map.Entry<Producto,Integer>>mapa = new ArrayList<>(pedido.entrySet());
-        mapa.sort(Map.Entry.comparingByKey(Comparator.reverseOrder()));
+        mapa.sort((e1, e2) -> e2.getValue().compareTo(e1.getValue()));
         for (Map.Entry<Producto,Integer> m :mapa){
             System.out.println("\t"+m.getValue()+" - "+m.getKey()+" "+m.getKey().getPrecio()+"€");
         }
