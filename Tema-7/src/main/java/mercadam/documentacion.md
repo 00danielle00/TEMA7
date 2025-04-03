@@ -90,6 +90,29 @@ he aplicado el **equals() y hashcode()** para que el usuario y la contraseña no
 
 ## Pruebas
 Prueba normal:
+![foto de la clase Pedido](img/cap1.png)
+
+![foto de la clase Pedido](img/cap2.png)
+
+Aplicar Descuento:
+
+![foto de la clase Pedido](img/descuento.png)
+
+Error de Autenticación:
+
+![foto de la clase Pedido](img/ErrorAutenticacion.png)
+
+Mostrar Productos por Unidades:
+
+![foto de la clase Pedido](img/mostrarPorUnidades.png)
+
+Error en el nombre de un Producto:
+
+![foto de la clase Pedido](img/nombreProductoError.png)
+
+Opción de Salir:
+
+![foto de la clase Pedido](img/terminarPedido.png)
 
 
 ## Entrega
