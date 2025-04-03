@@ -70,7 +70,6 @@ public class Cliente {
         boolean encontrado = false;
         for (Producto p : Producto.values()) {
             if (p.name().equalsIgnoreCase(producto)) {
-                pedido.anyadirProducto(p);
                 encontrado = true;
             }
         }

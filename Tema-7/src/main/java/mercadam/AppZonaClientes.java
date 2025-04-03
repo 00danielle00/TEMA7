@@ -23,38 +23,41 @@ public class AppZonaClientes {
         String passwd = "";
         int contador = 3;
 
-            do {
-                System.out.print("Usuario: ");
-                usuario = sc.next();
-                System.out.print("Contraseña: ");
-                passwd = sc.next();
-                Cliente clienteEncontrado=null;
-                for (Cliente c: clientes){
-                    if (usuario.equals(c.getUsuario())){
-                        clienteEncontrado=c;
-                        break;
-                    }
+        do {
+            System.out.print("Usuario: ");
+            usuario = sc.next();
+            System.out.print("Contraseña: ");
+            passwd = sc.next();
+            Cliente clienteEncontrado = null;
+            for (Cliente c : clientes) {
+                if (usuario.equals(c.getUsuario())) {
+                    clienteEncontrado = c;
+                    break;
                 }
-                if (clienteEncontrado != null && passwd.equals(clienteEncontrado.getContrasenya()) && usuario.equals(clienteEncontrado.getUsuario())) {
-                    System.out.println("Autenticación correcta");
-                    System.out.println("Bienvenid@ " + usuario);
-                    cliente=clienteEncontrado;
-                } else {
-                    contador--;
-                    System.out.println("Algo no coincide o no existe! Vuelve a intentarlo...");
-                    System.out.println("Te quedan " + contador + " intentos.");
-                }
-            }while (contador > 0);
+            }
+            if (clienteEncontrado != null && passwd.equals(clienteEncontrado.getContrasenya()) && usuario.equals(clienteEncontrado.getUsuario())) {
+                System.out.println("Autenticación correcta");
+                System.out.println("Bienvenid@ " + usuario);
+                cliente = clienteEncontrado;
+                return;
+            } else {
+                contador--;
+                System.out.println("Algo no coincide o no existe! Vuelve a intentarlo...");
+                System.out.println("Te quedan " + contador + " intentos.");
+            }
+        } while (contador > 0);
 
-
-            System.out.println("ERROR DE AUTENTICACION");
-
+        System.out.println("ERROR DE AUTENTICACION");
 
 
     }
 
     public static void iniciarCompra() {
-        cliente.setPedido(new Pedido());
+        if (cliente == null) {
+            return;
+        } else {
+            cliente.setPedido(new Pedido());
+        }
         imprimirProductos();
         String respuesta = "";
         do {
@@ -63,10 +66,8 @@ public class AppZonaClientes {
                 String productoElegido = sc.next().toUpperCase();
                 cliente.insertarProducto(productoElegido);
 
-
                 Producto producto = Producto.valueOf(productoElegido);
                 cliente.getPedido().anyadirProducto(producto);
-
 
                 System.out.println("¿Quieres añadir más productos a tu carrito de la compra?[S/N]");
                 respuesta = sc.next();
