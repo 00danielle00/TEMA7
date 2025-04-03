@@ -22,33 +22,39 @@ public class AppZonaClientes {
         String usuario = "";
         String passwd = "";
         int contador = 3;
-        for (mercadam.Cliente c : clientes) {
 
             do {
                 System.out.print("Usuario: ");
                 usuario = sc.next();
                 System.out.print("Contraseña: ");
                 passwd = sc.next();
-                if (!usuario.equals(c.getUsuario()) && !passwd.equals(c.getContrasenya())) {
-                    System.out.println("Algo no coincide o no existe! Vuelve a intentarlo...");
-                    contador--;
-                    System.out.println("te quedan " + contador + " intentos!!");
-                } else {
+                Cliente clienteEncontrado=null;
+                for (Cliente c: clientes){
+                    if (usuario.equals(c.getUsuario())){
+                        clienteEncontrado=c;
+                        break;
+                    }
+                }
+                if (clienteEncontrado != null && passwd.equals(clienteEncontrado.getContrasenya()) && usuario.equals(clienteEncontrado.getUsuario())) {
                     System.out.println("Autenticación correcta");
                     System.out.println("Bienvenid@ " + usuario);
-                    cliente = c;
-                    break;
+                    cliente=clienteEncontrado;
+                } else {
+                    contador--;
+                    System.out.println("Algo no coincide o no existe! Vuelve a intentarlo...");
+                    System.out.println("Te quedan " + contador + " intentos.");
                 }
-            } while (contador != 0);
-            if (contador == 0) {
-                System.out.println("ERROR DE AUTENTICACION");
-            }
-        }
+            }while (contador > 0);
+
+
+            System.out.println("ERROR DE AUTENTICACION");
+
+
 
     }
 
     public static void iniciarCompra() {
-        cliente.crearPedido();
+        cliente.setPedido(new Pedido());
         imprimirProductos();
         String respuesta = "";
         do {
@@ -100,15 +106,16 @@ public class AppZonaClientes {
         System.out.println("\t[2]. Mostrar resumen ordenado por uds promo.");
         System.out.println("\t[X]. Terminar pedido.");
     }
-    public static String recogerOpcionCliente(String opcion){
-        switch (opcion){
+
+    public static String recogerOpcionCliente(String opcion) {
+        switch (opcion) {
             case "1":
-                    if (!cliente.getPromociones()){
-                        cliente.getPedido().aplicarPromo3x2();
-                        cliente.getPedido().aplicarPromo10();
-                    }else {
-                        System.out.println("YA HAS APLICADO TUS PROMOS.");
-                    }
+                if (!cliente.getPromociones()) {
+                    cliente.getPedido().aplicarPromo3x2();
+                    cliente.getPedido().aplicarPromo10();
+                } else {
+                    System.out.println("YA HAS APLICADO TUS PROMOS.");
+                }
                 break;
             case "2":
                 cliente.getPedido().mostrarResumenPedido();

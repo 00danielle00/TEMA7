@@ -43,7 +43,8 @@ public class Pedido {
                 double total = descuento* mapaDescuento.getKey().getPrecio();
                 importe_total-=total;
                 System.out.println("PROMO 3X2 Y 10% APLICADAS");
-                System.out.println("Descuento de: "+total+" precio final del producto "+mapaDescuento.getKey().name()+" total "+importe_total);
+                System.out.println("Descuento de: "+total+" precio final del producto "+mapaDescuento.getKey().name()
+                 +" total "+importe_total);
             }
         }
 

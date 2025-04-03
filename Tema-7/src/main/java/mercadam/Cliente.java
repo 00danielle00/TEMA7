@@ -49,10 +49,11 @@ public class Cliente {
     }
 
     public void crearPedido() {
-        pedido =new Pedido();
+        pedido = new Pedido();
     }
 
     public double importePedido(){
+
         System.out.println("**RESUMEN DEL CARRITO DE LA COMPRA**");
         System.out.println("Productos:");
         for (Map.Entry<Producto, Integer> map : pedido.getPedido().entrySet()) {
@@ -65,11 +66,11 @@ public class Cliente {
     }
 
     public void insertarProducto(String producto) {
-        Producto productoAnyadido = null;
+
         boolean encontrado = false;
         for (Producto p : Producto.values()) {
             if (p.name().equalsIgnoreCase(producto)) {
-                productoAnyadido = p;
+                pedido.anyadirProducto(p);
                 encontrado = true;
             }
         }
