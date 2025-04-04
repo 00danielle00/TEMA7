@@ -35,7 +35,6 @@ public class Pedido {
 
     public void aplicarPromo3x2(){
         for (Map.Entry<Producto,Integer> mapaDescuento: pedido.entrySet()){
-            Producto a =mapaDescuento.getKey();
             int unidades = mapaDescuento.getValue();
 
             double descuento = unidades/3;

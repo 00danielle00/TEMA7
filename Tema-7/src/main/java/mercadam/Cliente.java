@@ -5,7 +5,7 @@ import mercadam.Pedido;
 import java.util.*;
 
 public class Cliente {
-    private static Scanner sc = new Scanner(System.in);
+
     private String usuario;
     private String contrasenya;
     private String direccion;

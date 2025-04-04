@@ -56,7 +56,7 @@ public class AppZonaClientes {
         if (cliente == null) {
             return;
         } else {
-            cliente.setPedido(new Pedido());
+            cliente.crearPedido();
         }
         imprimirProductos();
         String respuesta = "";

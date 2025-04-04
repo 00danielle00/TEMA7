@@ -116,7 +116,7 @@ Opción de Salir:
 
 
 ## Entrega
-- [ ] **Codigo fuente**: []()
-- [ ] **Vídeo demostrativo**:[]()
+- [ ] **Codigo fuente**: [cosigo fuente](https://github.com/00danielle00/TEMA7/tree/main/Tema-7/src/main/java/mercadam)
+- [ ] **Vídeo demostrativo**:[video esplicación](img/videoExplicacion.mp4)
 
 @pbemdom3
