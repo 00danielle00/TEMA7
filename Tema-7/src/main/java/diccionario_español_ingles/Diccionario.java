@@ -1,9 +1,6 @@
 package diccionario_español_ingles;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Diccionario {
 
@@ -29,6 +26,16 @@ public class Diccionario {
     }
 
     public void palabraAleatoria() {
+
+        int index = r.nextInt(mapaDiccionario.size());
+        int indice =0;
+        for (String p:mapaDiccionario.keySet()){
+            if (indice==index){
+                System.out.println(p);
+            }
+            indice++;
+        }
+
     }
 
     public void primeraLetraTraduccion(String espanyol) {
